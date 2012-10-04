@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <h1 align="center">Books</h1>
+        <ul class='entries'>
+        {% for book in books %}
+            <li>
+                <h2>{{ book.title }} 
+                    <a href="/edit/book/{{ book.id }}">
+                        <img src="{{ url_for('static', filename='img/edit.png') }}" />
+                    </a>
+                    <a href="{{ url_for('delete_book', book_id=book.id ) }}">
+                        <img src="{{ url_for('static', filename='img/delete.png') }}" />
+                    </a>
+                </h2>
+                {% for author in book.authors %}
+                    {{ author.name }}<br>
+                {% endfor %}
+            </li>
+        {% endfor %}
+        </ul>
+        <a href="/edit/book/">
+            <button>Add book</button>
+        </a>
+{% endblock %}
+

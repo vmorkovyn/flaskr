@@ -1,0 +1,30 @@
+<!doctype html>
+<title>My App</title>
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/jquery.multiselect.css') }}">
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/select_style.css') }}">
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/prettify.css') }}">
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.multiselect.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/prettify.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/add.js') }}"></script>
+
+<link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/style.css') }}">
+<script type='text/javascript'>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+<style>
+#selector {background-color: #beef99}
+</style>
+<div class='page'>
+  	{% for message in get_flashed_messages() %}
+    	<div class='flash'>{{ message }}</div>
+  	{% endfor %}
+  	{% block body %}{% endblock %}
+  	<br><br><br>
+  	<a href="{{ url_for('show_authors') }}"><button>Show authors</button></a>
+  	<a href="{{ url_for('show_books') }}"><button>Show books</button></a>
+  	<a href="{{ url_for('search_authors_books') }}"><button>Show search</button></a>
+</div>
+

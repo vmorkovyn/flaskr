@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block body %}
+    {% if book %}
+        <h1 align="center">Edit book</h1>
+        <h2 book_id={{ book.id }}>
+            {{ book.title }}
+            <a href="{{ url_for('delete_book', book_id=book.id ) }}">
+                <img src="{{ url_for('static', filename='img/delete.png') }}" />
+            </a>
+        </h2>   
+    {% endif %}
+    <form method='post' class='add-entry'>
+        <dl>  
+            <dt>{{ form.title.label }}</dt>
+            <dd>{{ form.title }}</dd>
+            <dt>{{ form.authors.label }}</dt>
+            <dd>{{ form.authors }}</dd>
+            {{ form.save }}
+        </dl>
+    </form>
+{% endblock %}
+

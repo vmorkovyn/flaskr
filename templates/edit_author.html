@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block body %}
+    {% if author %}
+        <h1 align="center">Edit author</h1>
+        <h2 author_id={{ author.id }}>
+            {{ author.name }} 
+            <a href="{{ url_for('delete_author', author_id=author.id ) }}">
+                <img src="{{ url_for('static', filename='img/delete.png') }}" />
+            </a>
+        </h2>
+    {% endif %}
+    <form method='post' class='add-entry'>
+        <dl>
+          {% for field in form %}
+            
+            <dt>{{ field.label }}</dt>
+            <dd>{{ field }}</dd>
+          {% endfor %}
+        </dl>
+    </form>
+{% endblock %}
